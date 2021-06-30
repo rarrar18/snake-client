@@ -11,10 +11,17 @@ const connect = function () {
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
+  // print message when connection is established
+  conn.on("connect", () => {
+    console.log("Successfully connected to game server");
+    conn.write("Name: RAR");
+  });
+
   // handle incoming data and print it for player
   conn.on("data", (data) => {
     console.log(`Server says: ${data}`);
   });
+
   return conn;
 };
 
