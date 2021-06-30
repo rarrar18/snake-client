@@ -14,19 +14,16 @@ const connect = function () {
   // print message when connection is established
   conn.on("connect", () => {
     console.log("Successfully connected to game server");
+    // prints name to server
     conn.write("Name: RAR");
-    
-    setInterval( (dir) => {
-      conn.write(`Move: ${dir}`);
-    }, 50)
   });
 
   // handle incoming data and print it for player
   conn.on("data", (data) => {
     console.log(`Server says: ${data}`);
   });
-
+  // returns an object that can be used to interact with the server
   return conn;
 };
 
-module.exports = connect;
+module.exports =  { connect };
