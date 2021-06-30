@@ -38,6 +38,18 @@ const handleUserInput = function (key) {
   if (key === '\u0064') {
     connection.write("Move: right");
   }
+  // \u006D = m for "Woooo!"
+  if (key === '\u006D') {
+    connection.write("Say: Woooo!")
+  }
+  // \u006E = n for "OH NOOO!"
+  if (key === '\u006E') {
+    connection.write("Say: OH NOOO!")
+  }
+  // \u0062 = b for "Look at me!"
+  if (key === '\u0062') {
+    connection.write("Say: Look at me!")
+  }
 };
 
 module.exports = { setUpInput };

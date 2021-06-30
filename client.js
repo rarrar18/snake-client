@@ -22,6 +22,11 @@ const connect = function () {
   conn.on("data", (data) => {
     console.log(`Server says: ${data}`);
   });
+
+  conn.on("end", () => {
+    console.log("Successfully disconnected from game server");
+  });
+  
   // returns an object that can be used to interact with the server
   return conn;
 };
