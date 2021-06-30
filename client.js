@@ -15,6 +15,10 @@ const connect = function () {
   conn.on("connect", () => {
     console.log("Successfully connected to game server");
     conn.write("Name: RAR");
+    
+    setInterval( (dir) => {
+      conn.write(`Move: ${dir}`);
+    }, 50)
   });
 
   // handle incoming data and print it for player
