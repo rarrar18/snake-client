@@ -1,3 +1,14 @@
+const {
+  MOVE_UP_KEY,
+  MOVE_LEFT_KEY,
+  MOVE_DOWN_KEY,
+  MOVE_RIGHT_KEY,
+  SAY_M1,
+  SAY_M2,
+  SAY_M3,
+  messages
+} = require("./constants");
+
 // Stores the active TCP connection object, used to send move commands/messages to server
 // reference to object returned by connect(), has global scope
 let connection;
@@ -22,32 +33,34 @@ const handleUserInput = function (key) {
     process.exit();
   }
   // \u0077 = w
-  if (key === '\u0077') {
-    // console.log("Move: up");
+  if (key === MOVE_UP_KEY) {
     connection.write("Move: up");
   }
   // \u0061 = a
-  if (key === '\u0061') {
+  if (key === MOVE_LEFT_KEY) {
     connection.write("Move: left");
   }
   // \u0073 = s
-  if (key === '\u0073') {
+  if (key === MOVE_DOWN_KEY) {
     connection.write("Move: down");
   }
   // \u0064 = d
-  if (key === '\u0064') {
+  if (key === MOVE_RIGHT_KEY) {
     connection.write("Move: right");
   }
+
+  // TODO: Try to use messages object to look up messages within key-value pairs
   // \u006D = m for "Woooo!"
-  if (key === '\u006D') {
-    connection.write("Say: Woooo!")
+  if (key === SAY_M1) {
+    // connection.write("Say: Woooo!")
+    connection.write("Say: Woooo!");
   }
   // \u006E = n for "OH NOOO!"
-  if (key === '\u006E') {
+  if (key === SAY_M2) {
     connection.write("Say: OH NOOO!")
   }
   // \u0062 = b for "Look at me!"
-  if (key === '\u0062') {
+  if (key === SAY_M3) {
     connection.write("Say: Look at me!")
   }
 };
