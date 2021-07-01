@@ -1,5 +1,5 @@
 const net = require("net");
-const { IP, PORT } = require("./constants");
+const { IP, PORT, name } = require("./constants");
 
 // establishes a connection with the game server
 const connect = function () {
@@ -16,7 +16,7 @@ const connect = function () {
   conn.on("connect", () => {
     console.log("Successfully connected to game server");
     // prints name to server
-    conn.write("Name: RAR");
+    conn.write("Name: " + name);
   });
 
   // handle incoming data and print it for player
